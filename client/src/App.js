@@ -1,0 +1,33 @@
+import { Box } from "@mui/material";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// components
+import Header from "./components/header/Header";
+import Home from "./components/home/Home";
+import DetailView from "./components/details/DetailView";
+import DataProvider from "./context/DataProvider";
+import Cart from "./components/cart/Cart";
+import Footer from "./components/footer/Footer";
+import LastSection from "./components/home/LastSection";
+
+function App() {
+  return (
+    <DataProvider>
+      <BrowserRouter>
+        <Header />
+        <Box style={{ marginTop: "54px" }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:id" element={<DetailView />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </Box>
+        <LastSection />
+        <Footer />
+      </BrowserRouter>
+    </DataProvider>
+  );
+}
+
+export default App;
